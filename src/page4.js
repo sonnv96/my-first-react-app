@@ -14,7 +14,6 @@ import Todo from "./components/Todo";
 class page4 extends Component {
     render() {
         const { dispatch } = this.props;
-        debugger
         const { textSearch, list } = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch));
 
