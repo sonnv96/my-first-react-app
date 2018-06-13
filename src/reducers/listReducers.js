@@ -1,4 +1,4 @@
-import {ADD_TODO, SEARCH, CLEAR_FILTER, REMOVE} from '../actions/listActions'
+import {ADD_TODO, SEARCH, CLEAR_FILTER, REMOVE, ACTIVE} from '../actions/listActions'
 function filter(state, action) {
     switch (action.type) {
         case SEARCH:
@@ -12,7 +12,7 @@ function filter(state, action) {
 }
 
 function todo(state, action) {
-    let maxIndex = 0;
+    let maxIndex = 2;
     maxIndex = Math.max(...state.list.map(o => o.id));
     switch (action.type) {
         case ADD_TODO:
@@ -40,6 +40,17 @@ function todos(state = {list: [{id:1, text:'acb'}, {id:2, text:'abc'}], textSear
             return {...state, textSearch: action.text};
         case CLEAR_FILTER:
             return {...state, textSearch: ''};
+        case ACTIVE:
+            return{
+                ...state,
+                    list: state.list.map(t=>{
+                    if(t.id === action.id)
+                    {
+                        return {...t,active : !t.active}
+                    }
+                    return t
+                })
+            }
 
         case REMOVE:
 
@@ -50,8 +61,9 @@ function todos(state = {list: [{id:1, text:'acb'}, {id:2, text:'abc'}], textSear
              // newState.list = newState.list.filter(x => x.id != action.id);
              // return newState;
             state.list = state.list.filter(x => x.id != action.id);
-            console.log(state);
-            return state;
+
+
+            return {...state};
             // return {...state, list: state.list.filter(x => x.id != action.id)};
         default:
         return state

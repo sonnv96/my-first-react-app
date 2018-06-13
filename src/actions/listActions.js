@@ -2,6 +2,7 @@ export const ADD_TODO = 'ADD_TODO'
 export const SEARCH = 'SEARCH'
 export const CLEAR_FILTER = 'CLEAR_FILTER'
 export const REMOVE = 'REMOVE'
+export const ACTIVE = 'ACTIVE'
 
 
 
@@ -32,6 +33,13 @@ export function Remove(id) {
     };
 }
 
+export function actionActive(id) {
+    return {
+        type: ACTIVE,
+        id
+
+    };
+}
 
 
 

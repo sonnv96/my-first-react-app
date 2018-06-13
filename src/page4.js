@@ -8,6 +8,7 @@ import Search from './components/search.js'
 
 import TodoList from './components/TodoList.js'
 import Todo from "./components/Todo";
+import ShowAll from "./components/ShowAll";
 
 
 
@@ -23,6 +24,7 @@ class page4 extends Component {
 
 
                 <AddTodo onAddClick = {text => dispatch(addTodo(text))} />
+
 
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
                 <TodoList todos = {filterList} dispatch = {dispatch}/>

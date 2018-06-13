@@ -13,6 +13,7 @@ class Search extends Component {
     render() {
         return (
             <div>
+            <div>
                 <input type = 'text' ref = 'input' />
 
                 <button onClick = {(e) => this.handleClick(e)}>
@@ -22,15 +23,22 @@ class Search extends Component {
                     Clear
                 </button>
 
+
+            </div>
+            <div>
+            Show All:<input type='radio' name='test'  value='showAll'  onChange={(i)=>this.clear(i)} />
+             Active  : <input type='radio' name='test'  value='a' />
+            UnActive: <input type='radio' name='test'  value='asa' />
+
+        </div>
             </div>
         )
     }
-
     clear(i) {
-        const node = this.refs.input
-        node.value = ""
-        const text = node.value.trim()
-        this.props.clearFilter(text)
+            const node = this.refs.input
+            node.value = ""
+            const text = node.value.trim()
+            this.props.clearFilter(text)
 
     }
     handleClick(e) {
