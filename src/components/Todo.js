@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import {Remove} from '../actions/listActions'
+import {Remove,actionActive} from '../actions/listActions'
 
 export default class Todo extends Component {
     constructor(props)
@@ -9,23 +9,41 @@ export default class Todo extends Component {
     }
 
     render() {
-        const { dispatch, id, text } = this.props;
+
+        const { dispatch, id, text, active } = this.props;
         return (
             <li>
                 <span style={{'marginRight': '10px'}}>id: {id}</span>
-                <span>name: {text} <button onClick = {(e) => dispatch(Remove(this.props.id))}>
+                <span>name: {text} </span>
+                <span className="activeclass" style={{'marginLeft': '10px', 'textDecoration': active === false ? 'line-through': 'none'}}>active: {active}</span>
+                <input  type= "button" style={{'marginLeft': '10px'}} value={active === true ? "Active" : "NonActive"}
+                        onClick = {() => dispatch(actionActive(id))}/>
+
+
+
+
+                <button style={{'marginLeft': '10px'}} onClick = {() => dispatch(Remove(this.props.id))}>
                     Remove
-                </button></span>
+                </button>
+                {/*Cách gọi hai hàm */}
+                {/*<button style={{'marginLeft': '10px'}} onClick = {() => {setTimeout(),dispatch(Remove(this.props.id))}}>*/}
+                    {/*Remove*/}
+                {/*</button>*/}
             </li>
         )
     }
-    remove(e) {
+    // setActiveStyle(a)
+    // {
+    //     a = this.props.active
+    //     if(a ===false)
+    //     {
+    //         document.getElementsByClassName('activeclass').style.textdecoration = 'line-through'
+    //     }
+    //
+    // }
 
 
-        const id = this.props.id
 
 
-        console.log(id)
-        this.props.removeClick(id)
-    }
 }
+
