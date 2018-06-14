@@ -11,7 +11,6 @@ export const EDIT_SAVE = 'EDIT_SAVE'
 let nextTodoId = 0;
 
 export function editSave(id, text, active) {
-    debugger
     return {
         type: EDIT_SAVE,
         id,

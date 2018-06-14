@@ -14,22 +14,24 @@ export default class Todo extends Component {
         const {dispatch, id, text, active} = this.props;
         return (
             <li>
+                <span    style = {{'textDecoration': active === false ? 'line-through' : 'none'}}>
                 <span style={{'marginRight': '10px'}}>id: {id}</span>
                 <span>name: {text} </span>
                 <span className="activeclass" style={{
                     'marginLeft': '10px',
                     'textDecoration': active === false ? 'line-through' : 'none'
-                }}>active: {active}</span>
+                }}> {active}</span>
+                </span>
                 <input type="button" style={{'marginLeft': '10px'}} value={active === true ? "Active" : "NonActive"}
                        onClick={() => dispatch(actionActive(id))}/>
 
-
-                <button style={{'marginLeft': '10px'}} onClick={() => dispatch(remove(this.props.id))}>
-                    Remove
-                </button>
                 <button style={{'marginLeft': '10px'}} onClick={() => dispatch(edit(id,text,active))}>
                     Edit
                 </button>
+                <button style={{'marginLeft': '10px'}} onClick={() => dispatch(remove(this.props.id))}>
+                    Remove
+                </button>
+
 
 
                 {/*Cách gọi hai hàm */}
