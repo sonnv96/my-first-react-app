@@ -1,36 +1,80 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {addTodo, Remove} from './actions/listActions'
+import {activeFilter, addTodo, FILTER_STATE, filterState, Remove, unactiveFilter} from './actions/listActions'
 import AddTodo from './components/AddtoDo.js'
+import Edit from './components/Edit'
 
 import { search, clearFilter } from './actions/listActions'
 import Search from './components/search.js'
 
 import TodoList from './components/TodoList.js'
 import Todo from "./components/Todo";
-import ShowAll from "./components/ShowAll";
+import StateFilter from "./components/stateFilter";
+
 
 
 
 class page4 extends Component {
     render() {
         const { dispatch } = this.props;
-        const { textSearch, list } = this.props.visibleTodos;
-        let filterList = list.filter(x => x.text.includes(textSearch));
+        const { textSearch, list , stateFilter} = this.props.visibleTodos;
+        let filterList = list.filter(x => x.text.includes(textSearch)
+            && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
+
+        // filterList = this.filter(filterList);
+        // if(stateFilter == 2)
+        // {
+        //     return x.active == true;
+        // }
+        // else
+        //     if(stateFilter == 3)
+        //     {
+        //         x.active == false;
+        //     }
+        //     else
+        //         return true
+        //
+        // if(stateFilter == 1)
+        // {
+        //     filterList = filterList.filter(x=>x.active === false)
+        // }
+        // else if(stateFilter == 2)
+        // {
+        //     filterList = filterList.filter(x=>x.active === true)
+        // }
 
         return (
             <div>
-                <Search searchClick = {text => dispatch(search(text))} clearFilter = {text => dispatch(clearFilter(text))} />
+                <Search searchClick = {text => dispatch(search(text))} clearFilter = {text => dispatch(clearFilter(text))}
+                />
 
 
                 <AddTodo onAddClick = {text => dispatch(addTodo(text))} />
+                <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
 
 
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
                 <TodoList todos = {filterList} dispatch = {dispatch}/>
+                <Edit/>
             </div>
         )
     }
+
+
+    //  filter = function(list) {
+    //     if(stateFilter == 1)
+    //     {
+    //         return list.filter(x=>x.active === false)
+    //     }
+    //     else if(stateFilter == 2)
+    //     {
+    //         return list.filter(x=>x.active === true)
+    //     }
+    //     else
+    //         return true
+    // };
+
+
 }
 function select(state) {
     return {

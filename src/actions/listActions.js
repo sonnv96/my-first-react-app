@@ -3,14 +3,22 @@ export const SEARCH = 'SEARCH'
 export const CLEAR_FILTER = 'CLEAR_FILTER'
 export const REMOVE = 'REMOVE'
 export const ACTIVE = 'ACTIVE'
-
-
+export const FILTER_STATE = 'FILTER_STATE'
+export const EDIT_SAVE = 'EDIT_SAVE'
 
 
 
 let nextTodoId = 0;
 
-
+export function editSave(id, text, active) {
+    debugger
+    return {
+        type: EDIT_SAVE,
+        id,
+        text,
+        active
+    };
+}
 export function addTodo(text) {
     return {
         type: ADD_TODO,
@@ -18,6 +26,7 @@ export function addTodo(text) {
         text
     };
 }
+
 export function search(text) {
     return {
         type: SEARCH,
@@ -25,13 +34,7 @@ export function search(text) {
     };
 }
 
-export function Remove(id) {
-    return {
-        type: REMOVE,
-        id
 
-    };
-}
 
 export function actionActive(id) {
     return {
@@ -41,12 +44,25 @@ export function actionActive(id) {
     };
 }
 
+export function remove(id) {
+    return {
+        type: REMOVE,
+        id
 
+    };
+}
 
-export function clearFilter(text)
-{
-    return{
+export function filterState(stateFilter) {
+    return {
+        type: FILTER_STATE,
+        stateFilter
+
+    };
+}
+
+export function clearFilter(text) {
+    return {
         type: CLEAR_FILTER,
-        text : text
+        text: text
     };
 }

@@ -1,4 +1,4 @@
-import { SET_NUM } from '../actions/numActions'
+import {SET_NUM} from '../actions/numActions'
 
 function nums(state = 0, action) {
     switch (action.type) {
@@ -9,4 +9,5 @@ function nums(state = 0, action) {
             return state
     }
 }
+
 export default nums
