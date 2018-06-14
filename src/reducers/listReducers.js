@@ -53,7 +53,6 @@ function todos(state = {list: [{id:1, text:'acb'}, {id:2, text:'abc'}], textSear
             }
 
         case REMOVE:
-
              // console.log(state);
              // let newState = {list: [], textSearch: state.textSearch};
              // state.list.forEach(x => newState.list.push(Object.assign({}, x)));
