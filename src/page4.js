@@ -19,7 +19,7 @@ class page4 extends Component {
         const { dispatch } = this.props;
         const { textSearch, list , stateFilter} = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch)
-            && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
+                && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
 
         // filterList = this.filter(filterList);
         // if(stateFilter == 2)
@@ -55,7 +55,7 @@ class page4 extends Component {
 
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
                 <TodoList todos = {filterList} dispatch = {dispatch}/>
-                <Edit/>
+
             </div>
         )
     }

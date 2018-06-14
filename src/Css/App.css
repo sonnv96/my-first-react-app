@@ -9,11 +9,21 @@
 {
   text-align: center;
   background: aqua;
-  margin: 30px;
+  margin: 30px 0 30px 0;
   height: 400px;
+  width: 100%;
 }
-.App-2  ul li{
-  margin: 5px;
+.App ul li a{
+  margin: 10px;
+  text-decoration: none;
+
+}
+ul {
+  list-style-type: none;
+}
+.App ul li a:hover
+{
+ color: orange;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

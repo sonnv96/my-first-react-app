@@ -17,22 +17,27 @@ class App extends Component {
                 <div>
                     <div className="App">
                         <Header/>
-                    </div>
-                    <div className="App-2">
                         <ul>
                             <li>
                                 <Link to={"/Page1"}>Page1</Link>
                                 <Link to={"/Page2"}>Page2</Link>
                                 <Link to={"/List"}>Page3</Link>
                                 <Link to={"/page4"}>Page4</Link>
+
                             </li>
                         </ul>
+                    </div>
+                    <div className="App-2">
+
+
                         <Switch>
                             <Route exact path="/Page1" component={Content}/>
                             <Route exact path="/Page2" component={Page2}/>
                             <Route exact path="/List" component={Key}/>
                             <Route exact path="/page4" component={page4}/>
                         </Switch>
+
+
                     </div>
                     <div className="App">
                         <Footer/>

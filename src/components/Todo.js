@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {Remove, actionActive, remove} from '../actions/listActions'
 import {edit} from '../actions/editAction'
+import Edit from './Edit'
 
 
 export default class Todo extends Component {
@@ -16,7 +17,7 @@ export default class Todo extends Component {
             <li>
                 <span    style = {{'textDecoration': active === false ? 'line-through' : 'none'}}>
                 <span style={{'marginRight': '10px'}}>id: {id}</span>
-                <span>name: {text} </span>
+                <span>name: {text}</span><Edit/>
                 <span className="activeclass" style={{
                     'marginLeft': '10px',
                     'textDecoration': active === false ? 'line-through' : 'none'
@@ -31,6 +32,7 @@ export default class Todo extends Component {
                 <button style={{'marginLeft': '10px'}} onClick={() => dispatch(remove(this.props.id))}>
                     Remove
                 </button>
+
 
 
 
