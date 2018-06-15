@@ -6,9 +6,10 @@ import {
     ACTIVE,
     ACTIVE_FILTER,
     UNACTIVE_FILTER,
-    FILTER_STATE, EDIT_SAVE
+    FILTER_STATE, EDIT_SAVE, CANCEL_EDIT, SET_STATUS
 } from '../actions/listActions'
 import PropTypes from 'prop-types';
+import {EDIT} from "../actions/editAction";
 
 function filter(state, action) {
     switch (action.type) {
@@ -49,13 +50,22 @@ function editsave(state, action) {
     }
 }
 
-function todos(state = {
-    list: [{id: 1, text: 'acb', active: true}, {id: 2, text: 'abc', active: false}],
-    textSearch: '', stateFilter: 1
-}, action) {
+let initState = {
+    list: [
+        {id: 1, text: 'acb', active: true},
+        {id: 2, text: 'abc', active: false}
+        ],
+    textSearch: '',
+    stateFilter: 1,
+    idEdit: 0,
+    addStatus : 0
+}
+
+function todos(state = initState, action) {
     switch (action.type) {
         case ADD_TODO:
             return {...state, list: [...state.list, todo(state, action)]}
+
         case EDIT_SAVE:
             return {...state,
             list : state.list.map(t => {
@@ -63,10 +73,21 @@ function todos(state = {
                     return {...t, text : action.text}
                 }
                 return t
-            })
+            }),
+            idEdit: 0
             }
-        case SEARCH:
 
+        case CANCEL_EDIT:
+            return {...state,
+                list : state.list.map(t => {
+                    if (t.id === action.id) {
+                        return {...t}
+                    }
+                    return t
+                })
+            }
+
+        case SEARCH:
             // console.log(state);
             //  let newState = [];
             //  state.forEach(x => newState.push(Object.assign({}, x)));
@@ -75,8 +96,13 @@ function todos(state = {
             // let newState = [{id:1, text:'acb'}, {id:2, text:'abc'}];
             // return newState.filter(x => x.text.includes(action.text));
             return {...state, textSearch: action.text};
+
         case CLEAR_FILTER:
             return {...state, textSearch: ''};
+        case SET_STATUS:
+            debugger
+            return{...state, addStatus: action.status}
+
         case ACTIVE:
             return {
                 ...state,
@@ -87,6 +113,7 @@ function todos(state = {
                     return t
                 })
             }
+
         case FILTER_STATE:
             return {...state, stateFilter: action.stateFilter};
 
@@ -98,12 +125,8 @@ function todos(state = {
             // newState.list = newState.list.filter(x => x.id != action.id);
             // return newState;
             state.list = state.list.filter(x => x.id != action.id);
-
-
             return {...state};
         // return {...state, list: state.list.filter(x => x.id != action.id)};
-
-
 
         default:
             return state

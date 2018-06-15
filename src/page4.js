@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {activeFilter, addTodo, FILTER_STATE, filterState, Remove, unactiveFilter} from './actions/listActions'
+import {
+    activeFilter,
+    addTodo,
+    FILTER_STATE,
+    filterState,
+    Remove,
+    setStatus,
+    unactiveFilter
+} from './actions/listActions'
 import AddTodo from './components/AddtoDo.js'
 import Edit from './components/Edit'
 
@@ -10,14 +18,16 @@ import Search from './components/search.js'
 import TodoList from './components/TodoList.js'
 import Todo from "./components/Todo";
 import StateFilter from "./components/stateFilter";
-
+import Add from './components/Add'
 
 
 
 class page4 extends Component {
     render() {
+        var nameDiv = (<div></div>)
+
         const { dispatch } = this.props;
-        const { textSearch, list , stateFilter} = this.props.visibleTodos;
+        const { textSearch, list , stateFilter,idEdit,addStatus} = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch)
                 && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
 
@@ -49,12 +59,13 @@ class page4 extends Component {
                 />
 
 
-                <AddTodo onAddClick = {text => dispatch(addTodo(text))} />
+                <AddTodo createClick={ ()=> dispatch(setStatus(1))} addStatus = {addStatus} onAddClick = {text => dispatch(addTodo(text))} />
+
                 <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
 
-
+                {addStatus == 1 ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
-                <TodoList todos = {filterList} dispatch = {dispatch}/>
+                <TodoList idEdit={idEdit}  todos = {filterList} dispatch = {dispatch}/>
 
             </div>
         )

@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react'
-import {Remove, actionActive, remove} from '../actions/listActions'
+import {Remove, actionActive, remove, addTodo} from '../actions/listActions'
 import {edit} from '../actions/editAction'
 import Edit from './Edit'
-
+import Add from './Add'
 
 export default class Todo extends Component {
     constructor(props) {
@@ -13,11 +13,28 @@ export default class Todo extends Component {
     render() {
 
         const {dispatch, id, text, active} = this.props;
+
+        var txtName = (
+            <div>
+                <span style={{'marginRight': '10px'}}>id: {id}</span>
+                <span>{text}</span>
+            </div>
+        );
+
+        var nameDiv = (<div></div>)
+
+
         return (
             <li>
+
+
+
                 <span    style = {{'textDecoration': active === false ? 'line-through' : 'none'}}>
-                <span style={{'marginRight': '10px'}}>id: {id}</span>
-                <span>name: {text}</span><Edit/>
+
+                    {id != this.props.idEdit ? txtName : nameDiv}
+
+
+                    <Edit idEdit = {id} />
                 <span className="activeclass" style={{
                     'marginLeft': '10px',
                     'textDecoration': active === false ? 'line-through' : 'none'

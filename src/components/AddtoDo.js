@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import {setStatus} from "../actions/listActions";
 
 class AddTodo extends Component {
     render() {
@@ -8,6 +9,9 @@ class AddTodo extends Component {
 
                 <button onClick = {(e) => this.handleClick(e)}>
                     Add
+                </button>
+                <button onClick = {() => this.props.createClick(1)}>
+                    Create
                 </button>
             </div>
         )
@@ -19,5 +23,6 @@ class AddTodo extends Component {
         this.props.onAddClick(text)
         node.value = ''
     }
+
 }
 export default AddTodo

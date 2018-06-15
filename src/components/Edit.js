@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 
 import {connect} from 'react-redux'
 import AddTodo from "./AddtoDo";
-import {editSave} from "../actions/listActions";
+import {cancelEdit, editSave} from "../actions/listActions";
 import {editValue, edit} from "../actions/editAction";
 
 class Edit extends Component {
@@ -13,7 +13,8 @@ class Edit extends Component {
         let {text} = this.props.visibleEdit;
         var formEdit = (<div></div>);
 
-        if (text != "") {
+
+        if (id != '' && id === this.props.idEdit) {
             formEdit = (
                 <div id="a">
 
@@ -24,6 +25,12 @@ class Edit extends Component {
                         dispatch(edit('', '', '')), dispatch(editSave(id, text, active))
                     }}>
                         Save
+                    </button>
+
+                    <button onClick=  {() => {
+                        dispatch(edit('', '', '')), dispatch(cancelEdit(id))
+                    }}>
+                        Cancel
                     </button>
                 </div>
             );

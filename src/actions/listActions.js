@@ -5,6 +5,8 @@ export const REMOVE = 'REMOVE'
 export const ACTIVE = 'ACTIVE'
 export const FILTER_STATE = 'FILTER_STATE'
 export const EDIT_SAVE = 'EDIT_SAVE'
+export const CANCEL_EDIT = 'CANCEL_EDIT'
+export const SET_STATUS = 'SET_STATUS'
 
 
 
@@ -23,6 +25,20 @@ export function addTodo(text) {
         type: ADD_TODO,
         id: nextTodoId++,
         text
+    };
+}
+    export function setStatus(status) {
+    return {
+        type: SET_STATUS,
+
+        status
+    };
+}
+export function cancelEdit(id) {
+    return {
+        type: CANCEL_EDIT,
+        id
+
     };
 }
 

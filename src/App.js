@@ -5,7 +5,7 @@ import Content from './page1/content';
 import Footer from './Home/Footer';
 import Key from './page3/List';
 import Page2 from "./page2";
-import Header from "./Home/header";
+import Header from "./Home/Header";
 import page4 from "./page4";
 
 class App extends Component {
