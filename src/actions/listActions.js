@@ -27,11 +27,11 @@ export function addTodo(text) {
         text
     };
 }
-    export function setStatus(status) {
+    export function setStatus(isCreating) {
     return {
         type: SET_STATUS,
 
-        status
+        isCreating
     };
 }
 export function cancelEdit(id) {

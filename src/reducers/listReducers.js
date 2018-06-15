@@ -4,8 +4,6 @@ import {
     CLEAR_FILTER,
     REMOVE,
     ACTIVE,
-    ACTIVE_FILTER,
-    UNACTIVE_FILTER,
     FILTER_STATE, EDIT_SAVE, CANCEL_EDIT, SET_STATUS
 } from '../actions/listActions'
 import PropTypes from 'prop-types';
@@ -58,7 +56,7 @@ let initState = {
     textSearch: '',
     stateFilter: 1,
     idEdit: 0,
-    addStatus : 0
+    isCreating : 0
 }
 
 function todos(state = initState, action) {
@@ -99,9 +97,10 @@ function todos(state = initState, action) {
 
         case CLEAR_FILTER:
             return {...state, textSearch: ''};
+
         case SET_STATUS:
             debugger
-            return{...state, addStatus: action.status}
+            return{...state, isCreating: action.isCreating}
 
         case ACTIVE:
             return {

@@ -27,7 +27,7 @@ class page4 extends Component {
         var nameDiv = (<div></div>)
 
         const { dispatch } = this.props;
-        const { textSearch, list , stateFilter,idEdit,addStatus} = this.props.visibleTodos;
+        const { textSearch, list , stateFilter,idEdit,isCreating} = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch)
                 && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
 
@@ -55,16 +55,18 @@ class page4 extends Component {
 
         return (
             <div>
+                {/*Search và Clear*/}
                 <Search searchClick = {text => dispatch(search(text))} clearFilter = {text => dispatch(clearFilter(text))}
                 />
 
-
-                <AddTodo createClick={ ()=> dispatch(setStatus(1))} addStatus = {addStatus} onAddClick = {text => dispatch(addTodo(text))} />
-
+                {/*Add*/}
+                <AddTodo createClick={ ()=> dispatch(setStatus(1))}  onAddClick = {text => dispatch(addTodo(text))} />
+                {/*Filter theo all, active and unactive*/}
                 <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
-
-                {addStatus == 1 ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
+                {/*Add*/}
+                {isCreating == 1 ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
+                {/*Hiện thị list*/}
                 <TodoList idEdit={idEdit}  todos = {filterList} dispatch = {dispatch}/>
 
             </div>
