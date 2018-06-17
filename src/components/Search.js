@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import ReactDOM from "react-dom";
 
 class Search extends Component {
     constructor(props) {
@@ -9,7 +8,6 @@ class Search extends Component {
             a: 1
         }
     }
-
     render() {
         return (
             <div>
@@ -29,8 +27,6 @@ class Search extends Component {
             </div>
         )
     }
-
-
     clear(i) {
         const node = this.refs.input
         node.value = ""
@@ -38,7 +34,6 @@ class Search extends Component {
         this.props.clearFilter(text)
 
     }
-
     handleClick(e) {
 
         const node = this.refs.input

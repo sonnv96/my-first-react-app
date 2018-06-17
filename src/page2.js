@@ -1,15 +1,8 @@
 import ComponentAPI from './page2/ComponentAPI';
 import ComponentLifeCycle from './page2/ComponentLifeCycle';
-
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addTodo} from './actions/listActions'
 import {setNum} from './actions/numActions'
-
-
-import {search, clearFilter} from './actions/listActions'
-import Search from './components/search.js'
 
 
 class Page2 extends Component {

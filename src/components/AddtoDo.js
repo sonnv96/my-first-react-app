@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import {setStatus} from "../actions/listActions";
+
 
 class AddTodo extends Component {
     render() {
@@ -10,7 +10,7 @@ class AddTodo extends Component {
                 <button onClick = {(e) => this.handleClick(e)}>
                     Add
                 </button>
-                <button onClick = {() => this.props.createClick(1)}>
+                <button onClick = {() => this.props.createClick(true)}>
                     Create
                 </button>
             </div>

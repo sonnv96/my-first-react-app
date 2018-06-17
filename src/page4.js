@@ -13,11 +13,11 @@ import AddTodo from './components/AddtoDo.js'
 import Edit from './components/Edit'
 
 import { search, clearFilter } from './actions/listActions'
-import Search from './components/search.js'
+import Search from './components/Search.js'
 
 import TodoList from './components/TodoList.js'
 import Todo from "./components/Todo";
-import StateFilter from "./components/stateFilter";
+import StateFilter from "./components/Statefilter";
 import Add from './components/Add'
 
 
@@ -29,7 +29,7 @@ class page4 extends Component {
         const { dispatch } = this.props;
         const { textSearch, list , stateFilter,idEdit,isCreating} = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch)
-                && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
+                && (stateFilter == 'ACTIVE' ? x.active == true : (stateFilter == 'UNACTIVE') ? x.active == false : true));
 
         // filterList = this.filter(filterList);
         // if(stateFilter == 2)
@@ -60,11 +60,11 @@ class page4 extends Component {
                 />
 
                 {/*Add*/}
-                <AddTodo createClick={ ()=> dispatch(setStatus(1))}  onAddClick = {text => dispatch(addTodo(text))} />
+                <AddTodo createClick={ ()=> dispatch(setStatus(true))}  onAddClick = {text => dispatch(addTodo(text))} />
                 {/*Filter theo all, active and unactive*/}
                 <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
                 {/*Add*/}
-                {isCreating == 1 ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
+                {isCreating == true ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
                 {/*Hiện thị list*/}
                 <TodoList idEdit={idEdit}  todos = {filterList} dispatch = {dispatch}/>

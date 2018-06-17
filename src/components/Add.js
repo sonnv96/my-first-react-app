@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+ import React, {Component, PropTypes} from 'react'
 
 import {connect} from 'react-redux'
 import AddTodo from "./AddtoDo";
@@ -8,18 +8,18 @@ import {editValue, edit} from "../actions/editAction";
 class Add extends Component {
     render() {
         const {dispatch} = this.props;
-        const {id, active} = this.props.visibleEdit;
-        let {text} = this.props.visibleEdit;
-        var formEdit = (<div></div>);
+
+
+
 
         return  (<div id="a">
             <input type='text' ref = 'input'/>
-            <button onClick={() => {this.handleClick(), dispatch(setStatus(0))
+            <button onClick={() => {this.handleClick(), dispatch(setStatus(false))
             }}>
                 Add
             </button>
             <button onClick=  {() => {
-                dispatch(setStatus(0))
+                dispatch(setStatus(false))
             }}>
                 Cancel
             </button>
