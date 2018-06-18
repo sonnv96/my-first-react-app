@@ -5,13 +5,10 @@ import {connect} from 'react-redux'
 import {setNum} from './actions/numActions'
 
 
-<<<<<<< HEAD
-import {search, clearFilter} from './actions/listActions'
-import Search from './components/Search.js'
 
 
-=======
->>>>>>> 3be3d283d39290c667530b0c2215d850835d8a38
+
+
 class Page2 extends Component {
     render() {
         const {dispatch, nums} = this.props
