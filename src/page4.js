@@ -18,7 +18,11 @@ import Search from './components/Search.js'
 import TodoList from './components/TodoList.js'
 import Todo from "./components/Todo";
 import StateFilter from "./components/Statefilter";
+<<<<<<< HEAD
 import Edit_Add from './components/Edit_Add'
+=======
+import Add from './components/Add'
+>>>>>>> 3be3d283d39290c667530b0c2215d850835d8a38
 
 
 
@@ -29,7 +33,11 @@ class page4 extends Component {
         const { dispatch } = this.props;
         const { textSearch, list , stateFilter,idEdit,cES} = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch)
+<<<<<<< HEAD
                 && (stateFilter == ACTIVE ? x.active == true : (stateFilter == UNACTIVE) ? x.active == false : true));
+=======
+                && (stateFilter == 'ACTIVE' ? x.active == true : (stateFilter == 'UNACTIVE') ? x.active == false : true));
+>>>>>>> 3be3d283d39290c667530b0c2215d850835d8a38
 
         // filterList = this.filter(filterList);
         // if(stateFilter == 2)
@@ -60,12 +68,20 @@ class page4 extends Component {
                 />
 
                 {/*Add*/}
+<<<<<<< HEAD
                 <AddTodo createClick={ ()=> dispatch(createEditStatus(CREATE_EDIT_STATUS_CREATING))}  onAddClick = {text => dispatch(addTodo(text))} />
                 {/*Filter theo all, active and unactive*/}
                 <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
                 {/*Add*/}
 
                 <Edit_Add cES = {cES} onAddClick = {text => dispatch(addTodo(text))}/>
+=======
+                <AddTodo createClick={ ()=> dispatch(setStatus(true))}  onAddClick = {text => dispatch(addTodo(text))} />
+                {/*Filter theo all, active and unactive*/}
+                <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
+                {/*Add*/}
+                {isCreating == true ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
+>>>>>>> 3be3d283d39290c667530b0c2215d850835d8a38
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
                 {/*Hiện thị list*/}
                 <TodoList idEdit={idEdit} cES = {cES}  todos = {filterList} dispatch = {dispatch}/>

@@ -55,9 +55,15 @@ let initState = {
         {id: 2, text: 'abc', active: false}
         ],
     textSearch: '',
+<<<<<<< HEAD
     stateFilter: ALL,
     idEdit: 0,
     cES: CREATE_EDIT_STATUS_NONE
+=======
+    stateFilter: "ALL",
+    idEdit: 0,
+    isCreating : false
+>>>>>>> 3be3d283d39290c667530b0c2215d850835d8a38
 }
 
 function todos(state = initState, action) {
