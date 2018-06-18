@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 
 import {connect} from 'react-redux'
 import AddTodo from "./AddtoDo";
-import {cancelEdit, editSave} from "../actions/listActions";
+import {cancelEdit, CREATE_EDIT_STATUS_EDITING2, editSave, setStatus} from "../actions/listActions";
 import {editValue, edit} from "../actions/editAction";
 
 class Edit extends Component {
@@ -12,12 +12,9 @@ class Edit extends Component {
         const {id, active} = this.props.visibleEdit;
         let {text} = this.props.visibleEdit;
         var formEdit = (<div></div>);
-
-
-        if (id != '' && id === this.props.idEdit) {
+        if (id != '' && id === this.props.idEdit && this.props.cES == CREATE_EDIT_STATUS_EDITING2) {
             formEdit = (
                 <div id="a">
-
 
                     <input type='text' value={text} onChange={(e) => dispatch(editValue(e.target.value))}/>
 
@@ -37,9 +34,9 @@ class Edit extends Component {
         }
 
         return formEdit;
-    }
-
 }
+}
+
 
 function select(state) {
     return {

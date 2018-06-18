@@ -1,7 +1,7 @@
 import { EDIT, CHANGE_TEXT } from "../actions/editAction";
 
 
-function edit(state = {id :'', text:'',active:''}, action) {
+function edit(state = {id : '', text:'',active:''}, action) {
     switch (action.type) {
         case EDIT:
             return {

@@ -10,7 +10,7 @@ class AddTodo extends Component {
                 <button onClick = {(e) => this.handleClick(e)}>
                     Add
                 </button>
-                <button onClick = {() => this.props.createClick(1)}>
+                <button onClick = {() => this.props.createClick()}>
                     Create
                 </button>
             </div>

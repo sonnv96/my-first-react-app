@@ -7,6 +7,7 @@ import Key from './page3/List';
 import Page2 from "./page2";
 import Header from "./Home/Header";
 import page4 from "./page4";
+import Page5 from "./page5";
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ class App extends Component {
                                 <Link to={"/Page2"}>Page2</Link>
                                 <Link to={"/List"}>Page3</Link>
                                 <Link to={"/page4"}>Page4</Link>
+                                <Link to={"/page5"}>Page5</Link>
 
                             </li>
                         </ul>
@@ -35,6 +37,7 @@ class App extends Component {
                             <Route exact path="/Page2" component={Page2}/>
                             <Route exact path="/List" component={Key}/>
                             <Route exact path="/page4" component={page4}/>
+                            <Route exact path="/page5" component={Page5}/>
                         </Switch>
 
 

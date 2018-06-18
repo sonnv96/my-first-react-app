@@ -2,34 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
     activeFilter,
-    addTodo,
+    addTodo, CREATE_EDIT_STATUS_CREATING, createEditStatus,
     FILTER_STATE,
     filterState,
     Remove,
-    setStatus,
+    ACTIVE, UNACTIVE,
     unactiveFilter
 } from './actions/listActions'
 import AddTodo from './components/AddtoDo.js'
 import Edit from './components/Edit'
 
 import { search, clearFilter } from './actions/listActions'
-import Search from './components/search.js'
+import Search from './components/Search.js'
 
 import TodoList from './components/TodoList.js'
 import Todo from "./components/Todo";
-import StateFilter from "./components/stateFilter";
-import Add from './components/Add'
+import StateFilter from "./components/Statefilter";
+import Edit_Add from './components/Edit_Add'
 
 
 
 class page4 extends Component {
     render() {
-        var nameDiv = (<div></div>)
+
 
         const { dispatch } = this.props;
-        const { textSearch, list , stateFilter,idEdit,isCreating} = this.props.visibleTodos;
+        const { textSearch, list , stateFilter,idEdit,cES} = this.props.visibleTodos;
         let filterList = list.filter(x => x.text.includes(textSearch)
-                && (stateFilter == 2 ? x.active == true : (stateFilter == 3) ? x.active == false : true));
+                && (stateFilter == ACTIVE ? x.active == true : (stateFilter == UNACTIVE) ? x.active == false : true));
 
         // filterList = this.filter(filterList);
         // if(stateFilter == 2)
@@ -60,14 +60,15 @@ class page4 extends Component {
                 />
 
                 {/*Add*/}
-                <AddTodo createClick={ ()=> dispatch(setStatus(1))}  onAddClick = {text => dispatch(addTodo(text))} />
+                <AddTodo createClick={ ()=> dispatch(createEditStatus(CREATE_EDIT_STATUS_CREATING))}  onAddClick = {text => dispatch(addTodo(text))} />
                 {/*Filter theo all, active and unactive*/}
                 <StateFilter filterStatus = {(stateFilter)=> dispatch(filterState(stateFilter))}/>
                 {/*Add*/}
-                {isCreating == 1 ? <Add onAddClick = {text => dispatch(addTodo(text))}/> : nameDiv }
+
+                <Edit_Add cES = {cES} onAddClick = {text => dispatch(addTodo(text))}/>
                 {/*<Todo removeClick = {id => dispatch(Remove(id))}/>*/}
                 {/*Hiện thị list*/}
-                <TodoList idEdit={idEdit}  todos = {filterList} dispatch = {dispatch}/>
+                <TodoList idEdit={idEdit} cES = {cES}  todos = {filterList} dispatch = {dispatch}/>
 
             </div>
         )

@@ -7,7 +7,7 @@ export default class TodoList extends Component {
         return (
             <ul>
                 {this.props.todos.map(todo =>
-                    <Todo idEdit={this.props.idEdit}
+                    <Todo idEdit={this.props.idEdit} cES = {this.props.cES}
                     key = {todo.id}
                     {...todo}
                     dispatch = {this.props.dispatch}

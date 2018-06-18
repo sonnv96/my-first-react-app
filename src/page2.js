@@ -9,7 +9,7 @@ import {setNum} from './actions/numActions'
 
 
 import {search, clearFilter} from './actions/listActions'
-import Search from './components/search.js'
+import Search from './components/Search.js'
 
 
 class Page2 extends Component {

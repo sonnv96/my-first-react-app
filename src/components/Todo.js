@@ -1,8 +1,15 @@
 import React, {Component, PropTypes} from 'react'
-import {Remove, actionActive, remove, addTodo} from '../actions/listActions'
+import {
+    Remove,
+    actionActive,
+    remove,
+    addTodo,
+    setStatus,
+    createEditStatus,
+    CREATE_EDIT_STATUS_EDITING2, CREATE_EDIT_STATUS_EDITING
+} from '../actions/listActions'
 import {edit} from '../actions/editAction'
 import Edit from './Edit'
-import Add from './Add'
 
 export default class Todo extends Component {
     constructor(props) {
@@ -34,7 +41,7 @@ export default class Todo extends Component {
                     {id != this.props.idEdit ? txtName : nameDiv}
 
 
-                    <Edit idEdit = {id} />
+                    <Edit idEdit = {id} cES = {this.props.cES}/>
                 <span className="activeclass" style={{
                     'marginLeft': '10px',
                     'textDecoration': active === false ? 'line-through' : 'none'
@@ -43,12 +50,16 @@ export default class Todo extends Component {
                 <input type="button" style={{'marginLeft': '10px'}} value={active === true ? "Active" : "NonActive"}
                        onClick={() => dispatch(actionActive(id))}/>
 
-                <button style={{'marginLeft': '10px'}} onClick={() => dispatch(edit(id,text,active))}>
+                <button style={{'marginLeft': '10px'}} onClick={() => {dispatch(createEditStatus(CREATE_EDIT_STATUS_EDITING2)),dispatch(edit(id,text,active))}}>
                     Edit
                 </button>
                 <button style={{'marginLeft': '10px'}} onClick={() => dispatch(remove(this.props.id))}>
                     Remove
                 </button>
+                <button style={{'marginLeft': '10px'}} onClick={() => {dispatch(createEditStatus(CREATE_EDIT_STATUS_EDITING)), dispatch(edit(id,text,active))}} >
+                 EDIT
+                </button>
+
 
 
 
